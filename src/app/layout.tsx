@@ -1,9 +1,10 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { siteConfig } from '@/lib/seo'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,8 +17,63 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Code Respite',
-  description: 'A personal developer notebook.',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  keywords: [
+    'Software Engineer',
+    'Amit',
+    'Developer',
+    'Portfolio',
+    'Learning',
+    'Programming',
+    'Notebook',
+  ],
+  authors: [
+    {
+      name: siteConfig.author,
+      url: siteConfig.url,
+    },
+  ],
+  creator: siteConfig.author,
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.title,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: '@amit',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 }
 
 export default function RootLayout({

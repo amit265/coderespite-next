@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { Section } from '@/components/motion/Section'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Notes',
+  description: 'Short-form thoughts, learning, and code snippets.',
+}
 
 export default async function NotesPage() {
   const notes = await getAllFilesFrontMatter('notes')

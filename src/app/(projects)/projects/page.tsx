@@ -2,6 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import { Section } from '@/components/motion/Section'
 import { ProjectList } from '@/components/projects/ProjectList'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Narrative descriptions of projects I\'ve built, focusing on the why and what I learned.',
+}
 
 export default function ProjectsPage() {
   const dataPath = path.join(process.cwd(), 'data', 'projects.json')

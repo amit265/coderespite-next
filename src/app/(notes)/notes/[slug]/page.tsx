@@ -3,6 +3,44 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Section } from '@/components/motion/Section'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
+import { siteConfig } from '@/lib/seo'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params
+  try {
+    const { frontMatter } = await getFileBySlug('notes', slug)
+    return {
+      title: frontMatter.title,
+      description: frontMatter.summary || siteConfig.description,
+      openGraph: {
+        title: frontMatter.title,
+        description: frontMatter.summary || siteConfig.description,
+        type: 'article',
+        publishedTime: frontMatter.date,
+        url: `${siteConfig.url}/notes/${slug}`,
+        images: [
+          {
+            url: frontMatter.image || siteConfig.ogImage,
+            width: 1200,
+            height: 630,
+            alt: frontMatter.title,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: frontMatter.title,
+        description: frontMatter.summary || siteConfig.description,
+        images: [frontMatter.image || siteConfig.ogImage],
+      },
+    }
+  } catch (error) {
+    return {
+      title: 'Note Not Found',
+    }
+  }
+}
 
 export default async function NotePage({ params }: { params: { slug: string } }) {
   const { slug } = params

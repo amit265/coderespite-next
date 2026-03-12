@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { Section } from '@/components/motion/Section'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Longer-form writing on software development, technology, and personal experiences.',
+}
 
 export default async function BlogPage() {
   const posts = await getAllFilesFrontMatter('blog')
