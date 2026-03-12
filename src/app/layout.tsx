@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { siteConfig } from '@/lib/seo'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -93,6 +94,7 @@ export default function RootLayout({
             <Header />
             <main className="mt-12">
               {children}
+              <Analytics />
             </main>
             <Footer />
           </div>
