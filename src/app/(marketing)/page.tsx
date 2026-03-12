@@ -1,14 +1,25 @@
 import Link from 'next/link'
+import fs from 'fs'
+import path from 'path'
 import { Section } from '@/components/motion/Section'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 export default async function HomePage() {
   const notes = await getAllFilesFrontMatter('notes')
-  const blogPosts = await getAllFilesFrontMatter('blog')
-
+  
   const recentNotes = notes
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3)
+
+  const dataPath = path.join(process.cwd(), 'data', 'projects.json')
+  const projectsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+  
+  // Highlighted projects: 1 from Mobile, 1 from Next, 1 from React
+  const highlightedProjects = [
+    ...(projectsData.mobile?.slice(0, 1) || []),
+    ...(projectsData.next?.slice(0, 1) || []),
+    ...(projectsData.react?.slice(0, 1) || [])
+  ]
 
   return (
     <div className="flex flex-col gap-20">
@@ -54,14 +65,29 @@ export default async function HomePage() {
 
       <Section delay={0.3}>
         <h2 className="text-2xl font-bold mb-6 tracking-tight">Highlighted Projects</h2>
-        <div className="prose prose-neutral dark:prose-invert">
-           <p>
-            I'm still figuring out how I want to talk about my work. I prefer to
-            explain the "why" behind a project, not just list its features.
-            More to come here soon.
-          </p>
-          <Link href="/projects" className="text-sm text-primary hover:underline not-prose">
-            Explore projects →
+        <div className="flex flex-col gap-8">
+           {highlightedProjects.map((project: any) => (
+             <div key={project.id} className="group flex flex-col gap-2">
+               <h3 className="font-medium group-hover:text-primary transition-colors flex items-center gap-2">
+                 {project.title}
+                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground uppercase font-bold tracking-widest">
+                   {project.id.startsWith('app') ? 'React Native' : 
+                    project.id.startsWith('next') ? 'Next.js' : 'React'}
+                 </span>
+               </h3>
+               <p className="text-sm text-muted-foreground leading-relaxed">
+                 {project.description}
+               </p>
+               <div className="flex gap-4">
+                 <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-xs font-medium hover:text-primary transition-colors">
+                   {project.id.startsWith('app') ? 'Play Store' : 'Live'}
+                 </a>
+                 <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-xs font-medium hover:text-primary transition-colors">Source</a>
+               </div>
+             </div>
+           ))}
+          <Link href="/projects" className="text-sm text-primary hover:underline mt-4 inline-block">
+            Explore all projects →
           </Link>
         </div>
       </Section>
