@@ -1,0 +1,14 @@
+---
+title: 'Understanding React Server Components'
+date: '2026-01-12'
+---
+
+This is a learning note on React Server Components.
+
+My current mental model:
+- They run on the server, once.
+- They can access the backend directly (file system, database).
+- They don't have state or lifecycle hooks (`useState`, `useEffect`).
+- They send rendered HTML to the client, reducing the JavaScript bundle size.
+
+This is different from a "client component", which is the traditional React component we're used to. You mark those with `'use client'`.
