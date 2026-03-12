@@ -3,7 +3,7 @@ import { siteConfig } from '@/lib/seo'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routes = ['', '/about', '/blog', '/projects', '/notes', '/apps'].map(
+  const routes = ['', '/projects', '/notes', '/apps'].map(
     (route) => ({
       url: `${siteConfig.url}${route}`,
       lastModified: new Date().toISOString().split('T')[0],

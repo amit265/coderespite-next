@@ -6,12 +6,9 @@ import clsx from 'clsx'
 
 const navItems = {
   '/': { name: 'Home' },
-  '/notes': { name: 'Notes' },
-  '/blog': { name: 'Blog' },
   '/projects': { name: 'Projects' },
-  '/learn': { name: 'Learn' },
+  '/notes': { name: 'Notes' },
   '/apps': { name: 'Apps' },
-  '/about': { name: 'About' },
 }
 
 export function Header() {
@@ -20,7 +17,7 @@ export function Header() {
   return (
     <header className="mb-16">
       <nav aria-label="Main navigation">
-        <ul className="flex flex-wrap items-center justify-center gap-4">
+        <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname
             return (
