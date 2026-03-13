@@ -49,7 +49,7 @@ export default async function NotePage({ params }: PageProps) {
   const { slug } = await params
 
   // Inline catch to keep the UI logic clean
-  const note = await getFileBySlug(slug).catch(() => null)
+  const note = await getFileBySlug('notes', slug).catch(() => null)
 
   if (!note) {
     notFound()

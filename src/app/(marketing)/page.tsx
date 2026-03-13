@@ -6,7 +6,7 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { Note, ProjectsData, Project } from '@/lib/types'
 
 export default async function HomePage() {
-  const notes: Note[] = await getAllFilesFrontMatter();
+  const notes: Note[] = await getAllFilesFrontMatter('notes');
 
   // Combine and sort by date
   const allWriting = [...notes]
@@ -78,6 +78,7 @@ export default async function HomePage() {
         <div className="flex flex-col gap-10">
            {highlightedProjects.map((project: Project) => (
              <div key={project.id} className="group flex flex-col gap-3">
+
                <h3 className="font-semibold group-hover:text-primary transition-colors flex items-center gap-2 text-lg">
                  {project.title}
                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground uppercase font-bold tracking-widest">

@@ -3,22 +3,27 @@ import path from "path";
 import matter from "gray-matter";
 import { Note } from "./types";
 
-const NOTES_PATH = path.join(process.cwd(), "src/content/notes");
+const CONTENT_PATH = path.join(process.cwd(), "src/content");
 
-// Helper to check if notes folder exists
-const ensureDirectory = () => {
-  if (!fs.existsSync(NOTES_PATH)) {
-    console.warn(`⚠️ Notes directory not found at: ${NOTES_PATH}`);
+// Helper to check if directory exists
+const ensureDirectory = (collection: string) => {
+  const collectionPath = path.join(CONTENT_PATH, collection);
+  if (!fs.existsSync(collectionPath)) {
+    console.warn(`⚠️ Collection directory not found at: ${collectionPath}`);
     return false;
   }
   return true;
 };
 
-export async function getFileBySlug(slug: string) {
-  const filePath = path.join(NOTES_PATH, `${slug}.mdx`);
+export async function getFileBySlug(collection: string, slug?: string) {
+  // Handle single argument case for backward compatibility or if slug is first
+  const actualCollection = slug ? collection : "notes";
+  const actualSlug = slug || collection;
+
+  const filePath = path.join(CONTENT_PATH, actualCollection, `${actualSlug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
-    throw new Error(`Note not found: ${slug}`);
+    throw new Error(`Content not found: ${actualCollection}/${actualSlug}`);
   }
 
   const source = fs.readFileSync(filePath, "utf8");
@@ -30,16 +35,17 @@ export async function getFileBySlug(slug: string) {
   };
 }
 
-export async function getAllNotesFrontMatter(): Promise<Note[]> {
-  if (!ensureDirectory()) return [];
+export async function getAllFilesFrontMatter(collection: string = "notes"): Promise<Note[]> {
+  if (!ensureDirectory(collection)) return [];
 
-  const files = fs.readdirSync(NOTES_PATH);
+  const collectionPath = path.join(CONTENT_PATH, collection);
+  const files = fs.readdirSync(collectionPath);
 
   return (
     files
       .filter((file) => file.endsWith(".mdx")) // Only MDX files
       .map((fileName) => {
-        const source = fs.readFileSync(path.join(NOTES_PATH, fileName), "utf8");
+        const source = fs.readFileSync(path.join(collectionPath, fileName), "utf8");
         const { data } = matter(source);
 
         return {
@@ -52,4 +58,4 @@ export async function getAllNotesFrontMatter(): Promise<Note[]> {
   );
 }
 
-export const getAllFilesFrontMatter = getAllNotesFrontMatter;
+export const getAllNotesFrontMatter = () => getAllFilesFrontMatter("notes");
