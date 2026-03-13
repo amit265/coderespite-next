@@ -1,43 +1,54 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-const root = process.cwd()
+const NOTES_PATH = path.join(process.cwd(), "src/content/notes");
 
-export function getFiles(type: string) {
-  return fs.readdirSync(path.join(root, 'src', 'content', type))
-}
+// Helper to check if notes folder exists
+const ensureDirectory = () => {
+  if (!fs.existsSync(NOTES_PATH)) {
+    console.warn(`⚠️ Notes directory not found at: ${NOTES_PATH}`);
+    return false;
+  }
+  return true;
+};
 
-export async function getFileBySlug(type: string, slug: string) {
-  const source = fs.readFileSync(
-    path.join(root, 'src', 'content', type, `${slug}.mdx`),
-    'utf8'
-  )
+export async function getFileBySlug(slug: string) {
+  const filePath = path.join(NOTES_PATH, `${slug}.mdx`);
 
-  const { data, content } = matter(source)
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Note not found: ${slug}`);
+  }
+
+  const source = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(source);
 
   return {
     frontMatter: data,
     mdxSource: content,
-  }
+  };
 }
 
-export async function getAllFilesFrontMatter(type: string) {
-  const files = fs.readdirSync(path.join(root, 'src', 'content', type))
+export async function getAllNotesFrontMatter() {
+  if (!ensureDirectory()) return [];
 
-  return files.reduce((allPosts, postSlug) => {
-    const source = fs.readFileSync(
-      path.join(root, 'src', 'content', type, postSlug),
-      'utf8'
-    )
-    const { data } = matter(source)
+  const files = fs.readdirSync(NOTES_PATH);
 
-    return [
-      {
-        ...data,
-        slug: postSlug.replace('.mdx', ''),
-      },
-      ...allPosts,
-    ]
-  }, [] as any[])
+  return (
+    files
+      .filter((file) => file.endsWith(".mdx")) // Only MDX files
+      .map((fileName) => {
+        const source = fs.readFileSync(path.join(NOTES_PATH, fileName), "utf8");
+        const { data } = matter(source);
+
+        return {
+          ...data,
+          slug: fileName.replace(".mdx", ""),
+        };
+      })
+      // Sort by date (newest first)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  );
 }
+
+export const getAllFilesFrontMatter = getAllNotesFrontMatter;

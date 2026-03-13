@@ -9,45 +9,56 @@ export default function AppsPage() {
   const projectsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
   const mobileApps = projectsData.mobile || []
 
+  // Split apps by status (Assuming your JSON has a 'status' or 'published' field)
+  const publishedApps = mobileApps.filter((app: any) => app.live !== null )
+  const workshopApps = mobileApps.filter((app: any) => app.live === null)
+
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-12">
       <Section>
-        <h1 className="font-bold text-3xl mb-8 tracking-tighter">Apps</h1>
-        <p className="prose prose-neutral dark:prose-invert mb-8">
-          This is my mobile laboratory. I build these apps primarily to solve my own problems or to explore specific interaction patterns on Android and iOS.
+        <h1 className="font-bold text-3xl mb-4 tracking-tighter">Mobile Lab</h1>
+        <p className="prose prose-neutral dark:prose-invert mb-8 text-muted-foreground">
+          My digital scratchpad. I build these apps to solve my own problems, then polish them enough to survive on your phone.
         </p>
-        <div className="p-4 bg-secondary/50 border border-muted rounded-lg text-sm text-muted-foreground italic prose prose-neutral dark:prose-invert">
-          <p>
-            Note: While some are on the Play Store, many are "forever-beta" tools I use for my own learning reinforcement.
-          </p>
-        </div>
       </Section>
 
+      {/* --- Section 1: In the Workshop --- */}
       <Section delay={0.1}>
+        <div className="flex items-center gap-2 mb-6">
+          <h2 className="font-semibold text-xl tracking-tight">Still Cooking</h2>
+          <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-[10px] font-bold uppercase tracking-wider border border-amber-500/20">
+            Active Builds
+          </span>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {mobileApps.map((app: any) => (
+          {workshopApps.map((app: any) => (
             <ProjectCard key={app.id} {...app} />
           ))}
-          
-          {/* Internal Tool Placeholder */}
-          <div className="group flex flex-col bg-secondary/10 rounded-xl overflow-hidden border border-dashed border-muted p-5 transition-all">
-            <h3 className="text-lg font-bold mb-2 text-muted-foreground italic">
-              Internal: Spaced Repetition Tool
-            </h3>
-            <p className="text-sm text-muted-foreground/60 leading-relaxed mb-4">
-              My private tool for practicing concepts using flashcards. Built with React Native & SQLite. Not for public release.
-            </p>
-            <span className="text-[10px] font-mono text-muted-foreground/40 mt-auto uppercase tracking-tighter">
-              Private Build
-            </span>
-          </div>
+          {workshopApps.length === 0 && (
+            <p className="text-sm text-muted-foreground italic">No active fires... for now.</p>
+          )}
         </div>
       </Section>
 
+      {/* --- Section 2: Out in the Wild --- */}
       <Section delay={0.2}>
-        <div className="prose prose-neutral dark:prose-invert text-sm">
+        <div className="flex items-center gap-2 mb-6">
+          <h2 className="font-semibold text-xl tracking-tight">In the Wild</h2>
+          <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider border border-green-500/20">
+            {publishedApps.length} Apps Live
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {publishedApps.map((app: any) => (
+            <ProjectCard key={app.id} {...app} />
+          ))}
+        </div>
+      </Section>
+
+      <Section delay={0.3}>
+        <div className="prose prose-neutral dark:prose-invert text-sm border-t border-muted pt-8">
           <p>
-            Looking for my web work? Check the <Link href="/projects" className="text-primary hover:underline">full projects index</Link>.
+            Curious about the web side? Explore the <Link href="/projects" className="text-primary hover:underline font-medium">Full Projects Index</Link>.
           </p>
         </div>
       </Section>

@@ -10,10 +10,9 @@ export const metadata: Metadata = {
 
 export default async function NotesPage() {
   const notes = await getAllFilesFrontMatter('notes')
-  const blog = await getAllFilesFrontMatter('blog')
 
   // Combine and sort by date descending
-  const allWriting = [...notes, ...blog].sort((a, b) => 
+  const allWriting = [...notes,].sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
@@ -27,8 +26,8 @@ export default async function NotesPage() {
       <div className="flex flex-col gap-10">
         {allWriting.map((item) => (
           <div key={item.slug}>
-            <Link 
-              href={item.slug.includes('blog') ? `/blog/${item.slug}` : `/notes/${item.slug}`}
+            <Link
+              href={`/notes/${item.slug}`}
               className="group flex flex-col gap-1"
             >
               <h2 className="font-semibold text-xl group-hover:text-primary transition-colors">
@@ -42,9 +41,6 @@ export default async function NotesPage() {
                     day: 'numeric',
                   })}
                 </time>
-                {item.slug.includes('blog') && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary font-bold tracking-widest uppercase">Post</span>
-                )}
               </div>
             </Link>
           </div>

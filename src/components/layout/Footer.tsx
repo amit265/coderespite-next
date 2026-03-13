@@ -16,7 +16,7 @@ export function Footer() {
       <div className="flex flex-col items-center gap-8">
         <div className="flex gap-6 items-center">
           <a
-            href="https://github.com/amit"
+            href="https://github.com/amit265"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
@@ -25,7 +25,7 @@ export function Footer() {
             <Github className="h-5 w-5" />
           </a>
           <a
-            href="https://twitter.com/amit"
+            href="https://x.com/amit_265"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"

@@ -18,7 +18,7 @@ export default function ProjectsPage() {
       <Section>
         <h1 className="font-bold text-3xl mb-8 tracking-tighter">Projects</h1>
         <p className="prose prose-neutral dark:prose-invert mb-12">
-          These are narrative descriptions of projects I've built. I focus on the "why" and what I learned, not just a list of features.
+          From &apos;Hello World&apos; to the App Store. A digital paper trail of my evolution, one bug fix at a time.
         </p>
       </Section>
 

@@ -5,11 +5,10 @@ import { Section } from '@/components/motion/Section'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 export default async function HomePage() {
-  const notes = await getAllFilesFrontMatter('notes')
-  const blog = await getAllFilesFrontMatter('blog')
+  const notes = await getAllFilesFrontMatter();
   
   // Combine and sort by date
-  const allWriting = [...notes, ...blog]
+  const allWriting = [...notes]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 4)
 
@@ -17,7 +16,7 @@ export default async function HomePage() {
   const projectsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
   
   const highlightedProjects = [
-    ...(projectsData.mobile?.slice(0, 1) || []),
+    ...(projectsData.mobile?.slice(0, 3) || []),
     ...(projectsData.next?.slice(0, 1) || []),
     ...(projectsData.react?.slice(0, 1) || [])
   ]
@@ -28,14 +27,10 @@ export default async function HomePage() {
         <h1 className="text-3xl font-bold mb-8 tracking-tighter">Code Respite</h1>
         <div className="prose prose-neutral dark:prose-invert space-y-6">
           <p className="text-lg leading-relaxed text-muted-foreground">
-            I'm a developer building tools for thought and documenting the process of learning. 
-            This website is my personal space to think in public and share my projects without the 
-            pressure of a typical portfolio.
+            I&apos;m a developer building tools for thought and documenting the process of learning. 
+            This website is my personal space to think in public and share my projects.
           </p>
-          <p>
-            I believe in building for myself first. What you see here is a mix of project 
-            narratives, technical reflections, and raw notes. It's a return to a more personal web.
-          </p>
+        
         </div>
       </Section>
 
@@ -103,13 +98,13 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <Section delay={0.4}>
+      {/* <Section delay={0.4}>
         <div className="p-6 rounded-2xl bg-secondary/30 border border-border/50">
             <p className="text-sm text-muted-foreground leading-relaxed">
                 I also maintain a small collection of <Link href="/apps" className="text-primary font-medium hover:underline">Android apps</Link> I use for daily practice and learning reinforcement. They're built for personal use, not as polished products.
             </p>
         </div>
-      </Section>
+      </Section> */}
     </div>
   )
 }
