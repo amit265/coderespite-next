@@ -1,21 +1,22 @@
 import Link from 'next/link'
-import fs from 'fs'
-import path from 'path'
+import * as fs from 'fs'
+import * as path from 'path'
 import { Section } from '@/components/motion/Section'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { Note, ProjectsData, Project } from '@/lib/types'
 
 export default async function HomePage() {
-  const notes = await getAllFilesFrontMatter();
-  
+  const notes: Note[] = await getAllFilesFrontMatter();
+
   // Combine and sort by date
   const allWriting = [...notes]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 4)
 
   const dataPath = path.join(process.cwd(), 'data', 'projects.json')
-  const projectsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
-  
-  const highlightedProjects = [
+  const projectsData: ProjectsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+
+  const highlightedProjects: Project[] = [
     ...(projectsData.mobile?.slice(0, 3) || []),
     ...(projectsData.next?.slice(0, 1) || []),
     ...(projectsData.react?.slice(0, 1) || [])
@@ -30,7 +31,7 @@ export default async function HomePage() {
             I&apos;m a developer building tools for thought and documenting the process of learning. 
             This website is my personal space to think in public and share my projects.
           </p>
-        
+
         </div>
       </Section>
 
@@ -75,7 +76,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="flex flex-col gap-10">
-           {highlightedProjects.map((project: any) => (
+           {highlightedProjects.map((project: Project) => (
              <div key={project.id} className="group flex flex-col gap-3">
                <h3 className="font-semibold group-hover:text-primary transition-colors flex items-center gap-2 text-lg">
                  {project.title}

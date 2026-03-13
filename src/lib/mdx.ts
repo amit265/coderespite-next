@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { Note } from "./types";
 
 const NOTES_PATH = path.join(process.cwd(), "src/content/notes");
 
@@ -29,7 +30,7 @@ export async function getFileBySlug(slug: string) {
   };
 }
 
-export async function getAllNotesFrontMatter() {
+export async function getAllNotesFrontMatter(): Promise<Note[]> {
   if (!ensureDirectory()) return [];
 
   const files = fs.readdirSync(NOTES_PATH);
@@ -44,7 +45,7 @@ export async function getAllNotesFrontMatter() {
         return {
           ...data,
           slug: fileName.replace(".mdx", ""),
-        };
+        } as Note;
       })
       // Sort by date (newest first)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
