@@ -4,7 +4,7 @@
             "title": "Spin the Wheel : Pick for me",
             "path": "spin-the-wheel",
             "live": "https://play.google.com/store/apps/details?id=com.mindcraftlearning.spinthewheel",
-            "appleStore": null,
+            "appleStore": "https://apps.apple.com/us/app/spinny-random-picker-wheel/id6760378786",
             "github": "https://github.com/amit265/spin-the-wheel",
             "image": "spin-the-wheel",
             "description": "A customizable random picker and decision maker for fun topics, games, and challenges."
@@ -44,7 +44,7 @@
             "title": "Trivia Quest AI",
             "path": "trivia-quest-ai",
             "live": "https://play.google.com/store/apps/details?id=com.coderespite.triviaquestai",
-            "appleStore": null,
+            "appleStore": "https://apps.apple.com/us/app/trivia-quest-ai-brain-quiz/id6760843431",
             "github": "https://github.com/amit265/trivia-quest-ai",
             "image": "trivia-quest-ai",
             "description": "An engaging trivia game with AI-generated questions across multiple categories like Science, Tech, and History."

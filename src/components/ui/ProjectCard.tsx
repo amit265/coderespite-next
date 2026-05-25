@@ -60,8 +60,7 @@ export function ProjectCard({ title, description, live, github, image, appleStor
           )}
 
           <a
-            href={github}
-            target="_blank"
+            href="#"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
