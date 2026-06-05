@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
   /* config options here */
   async rewrites() {
     return [
+        {
+        // When a user visits this URL on coderespite.com...
+        source: "/finance-calculator-hub",
+        // ...silently fetch the content from your new Vercel app!
+        destination: "https://finance-calculator-hub-qn6z.vercel.app/finance-calculator-hub",
+      },
+      {
+        // This handles all sub-pages like /ai-writing/grammar-checker
+        source: "/finance-calculator-hub/:path*",
+        destination: "https://finance-calculator-hub-qn6z.vercel.app/finance-calculator-hub/:path*",
+      },
       {
         // When a user visits this URL on coderespite.com...
         source: "/ai-writing",
@@ -26,6 +37,7 @@ const nextConfig: NextConfig = {
         source: "/ai-writing/:path*",
         destination: "https://ai-writing-swart.vercel.app/ai-writing/:path*",
       },
+
     ];
   },
 };
