@@ -16,13 +16,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
         {
-        // When a user visits this URL on coderespite.com...
         source: "/finance-calculator-hub",
-        // ...silently fetch the content from your new Vercel app!
         destination: "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub",
       },
       {
-        // This handles all sub-pages like /ai-writing/grammar-checker
         source: "/finance-calculator-hub/:path*",
         destination: "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub/:path*",
       },
