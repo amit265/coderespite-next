@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/converter-hub",
+        destination: "https://converter-hub-plum.vercel.app/converter-hub",
+      },
+      {
+        source: "/converter-hub/:path*",
+        destination:
+          "https://converter-hub-plum.vercel.app/converter-hub/:path*",
+      },
+      {
         source: "/finance-calculator-hub",
         destination:
           "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub",
