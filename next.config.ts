@@ -15,13 +15,23 @@ const nextConfig: NextConfig = {
   /* config options here */
   async rewrites() {
     return [
-        {
+      {
         source: "/finance-calculator-hub",
-        destination: "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub",
+        destination:
+          "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub",
       },
       {
         source: "/finance-calculator-hub/:path*",
-        destination: "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub/:path*",
+        destination:
+          "https://finance-calculator-hub-sooty.vercel.app/finance-calculator-hub/:path*",
+      },
+      {
+        source: "/pdftoolkit",
+        destination: "https://pdf-toolkit-eight.vercel.app/pdftoolkit",
+      },
+      {
+        source: "/pdftoolkit/:path*",
+        destination: "https://pdf-toolkit-eight.vercel.app/pdftoolkit/:path*",
       },
       {
         // When a user visits this URL on coderespite.com...
@@ -34,7 +44,6 @@ const nextConfig: NextConfig = {
         source: "/ai-writing/:path*",
         destination: "https://ai-writing-swart.vercel.app/ai-writing/:path*",
       },
-
     ];
   },
 };
