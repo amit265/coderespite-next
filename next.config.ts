@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
       {
         source: "/interview-coach-ai/:path*",
         destination:
-          "https://https://interview-coach-ai-nine.vercel.app/interview-coach-ai/:path*",
+          "https://interview-coach-ai-nine.vercel.app/interview-coach-ai/:path*",
       },
       {
         source: "/converter-hub",
