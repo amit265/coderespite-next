@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
   /* config options here */
   async rewrites() {
     return [
+
+      // https://interview-coach-ai-nine.vercel.app/interview-coach-ai
+         {
+        source: "/interview-coach-ai",
+        destination: "https://interview-coach-ai-nine.vercel.app/interview-coach-ai",
+      },
+      {
+        source: "/interview-coach-ai/:path*",
+        destination:
+          "https://https://interview-coach-ai-nine.vercel.app/interview-coach-ai/:path*",
+      },
       {
         source: "/converter-hub",
         destination: "https://converter-hub-plum.vercel.app/converter-hub",
