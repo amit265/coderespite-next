@@ -15,11 +15,10 @@ const nextConfig: NextConfig = {
   /* config options here */
   async rewrites() {
     return [
-
-      // https://interview-coach-ai-nine.vercel.app/interview-coach-ai
-         {
+      {
         source: "/interview-coach-ai",
-        destination: "https://interview-coach-ai-nine.vercel.app/interview-coach-ai",
+        destination:
+          "https://interview-coach-ai-nine.vercel.app/interview-coach-ai",
       },
       {
         source: "/interview-coach-ai/:path*",
