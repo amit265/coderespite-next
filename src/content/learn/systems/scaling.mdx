@@ -1,0 +1,32 @@
+---
+title: "Introduction to Distributed Systems Horizontal Scaling"
+description: "A developer guide mapping load balancers, database sharding strategies, and serverless replica scales."
+date: "2026-07-15"
+category: "System Design"
+difficulty: "Beginner"
+tags: ["scaling", "system-design", "database"]
+---
+
+# Introduction
+
+Scaling software systems involves accommodating increasing user queries and data payloads. Scaling is split into two models:
+1. **Vertical Scaling (Scaling Up)**: Increasing CPU, memory, and disk capacities of a single database server.
+2. **Horizontal Scaling (Scaling Out)**: Partitioning workloads across multiple database server instances.
+
+---
+
+# Load Balancing Topologies
+
+Load balancers sit between client requests and server nodes, routing transactions based on:
+- **Round Robin**: Sequential task distributions.
+- **Least Connections**: Allocating tasks to nodes handling minimal concurrent queries.
+- **IP Hash**: Mapping requests to target nodes using user IP hashes to ensure session persistence.
+
+---
+
+# Data Partitioning & Consistency
+
+Enforcing horizontal databases scale requires sharding tables. However, this introduces complications governed by the **CAP Theorem**:
+- **Consistency**: All nodes see identical data simultaneously.
+- **Availability**: Every request receives a non-error response.
+- **Partition Tolerance**: The system operates despite message losses or network drops.

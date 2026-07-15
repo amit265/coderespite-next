@@ -4,17 +4,20 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { CommandMenu } from '@/components/layout/CommandMenu'
 import { siteConfig } from '@/lib/seo'
 import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -26,12 +29,12 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     'Software Engineer',
-    'Amit',
-    'Developer',
-    'Portfolio',
-    'Learning',
-    'Programming',
-    'Notebook',
+    'Developer Utilities',
+    'AI Coding Assistant',
+    'Developer Ecosystem',
+    'Next.js Tutorials',
+    'Programming Debugging',
+    'CoderRespite',
   ],
   authors: [
     {
@@ -61,7 +64,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: '@amit',
+    creator: '@amit_265',
   },
   icons: {
     icon: [
@@ -76,8 +79,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
   ],
 }
 
@@ -88,16 +91,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-2xl mx-auto px-6 py-12 lg:py-20">
-            <Header />
-            <main className="mt-12">
-              {children}
-              <Analytics />
-            </main>
-            <Footer />
-          </div>
+      <body className="antialiased min-h-screen flex flex-col bg-background text-foreground transition-colors duration-200" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <Header />
+          <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            {children}
+          </main>
+          <Footer />
+          <CommandMenu />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

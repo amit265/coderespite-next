@@ -1,0 +1,42 @@
+---
+title: "Resolving Peer Dependency Conflicts in NPM"
+description: "A troubleshooting handbook to resolve peer dependency collision errors and legacy flags."
+date: "2026-07-15"
+category: "Package Management"
+tags: ["npm", "node", "dependencies"]
+---
+
+# Problem
+
+During execution of `npm install`, the package manager logs a conflict exception:
+`npm ERR! code ERESOLVE\nnpm ERR! ERESOLVE unable to resolve dependency tree\nnpm ERR! Found: some-package@1.0.0\nnpm ERR! node_modules/some-package`
+
+---
+
+# Symptoms
+
+- Dependency installation yields exit code `1` and aborts.
+- `package-lock.json` file hashes are unaligned.
+- Developer workspaces fail compile builds due to missing modules.
+
+---
+
+# Root Cause
+
+Since NPM v7, peer dependencies are installed by default. If a dependency chain requires conflicting versions of a shared peer package, NPM raises a strict resolution exception (`ERESOLVE`) instead of resolving to a fallback version.
+
+---
+
+# Quick Fix
+
+Use the explicit bypass flags:
+
+```bash
+# Bypass strict peer version resolutions
+npm install --legacy-peer-deps
+
+# Force override conflicts (use with caution)
+npm install --force
+```
+
+Alternatively, align configurations inside `package.json` directly to resolve matching version intervals.

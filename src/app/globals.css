@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
 @theme {
   /* Fonts */
   --font-sans: var(--font-inter);
@@ -36,63 +37,96 @@
 
 @layer base {
   :root {
-    /* Soft off-white (paper-like) background */
-    --background: 40 33% 98%;
-    /* Near-black text (not pure black) */
-    --foreground: 210 20% 12%;
-    --card: 40 33% 98%;
-    --card-foreground: 210 20% 12%;
-    --popover: 40 33% 98%;
-    --popover-foreground: 210 20% 12%;
-    /* Muted indigo accent */
-    --primary: 226 70% 65%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 40 20% 94%;
-    --secondary-foreground: 210 20% 12%;
-    --muted: 40 20% 92%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 40 20% 94%;
-    --accent-foreground: 210 20% 12%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 40 20% 88%;
-    --input: 40 20% 88%;
-    --ring: 226 70% 65%;
+    /* Muted obsidian light theme */
+    --background: 240 10% 98%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 263 90% 50%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 263 90% 50%;
   }
 
   .dark {
-    /* Very dark gray background (not pure black) */
-    --background: 210 20% 8%;
-    /* Soft white text */
-    --foreground: 40 33% 94%;
-    --card: 210 20% 8%;
-    --card-foreground: 40 33% 94%;
-    --popover: 210 20% 8%;
-    --popover-foreground: 40 33% 94%;
-    --primary: 226 70% 65%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 20% 14%;
-    --secondary-foreground: 40 33% 94%;
-    --muted: 210 20% 14%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 210 20% 14%;
-    --accent-foreground: 40 33% 94%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 40 33% 94%;
-    --border: 210 20% 14%;
-    --input: 210 20% 14%;
-    --ring: 226 70% 65%;
+    /* Premium Obsidian & Deep Slate Dark Theme */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 263 90% 64%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 12%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 263 90% 64%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
   }
 }
 
-/* Custom Typography settings for MDX */
+/* Custom Utilities */
+@utility glassmorphism {
+  background: rgba(var(--background), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 @utility prose {
   color: hsl(var(--foreground));
   a {
     color: hsl(var(--primary));
     text-decoration: underline;
     &:hover {
-      color: hsl(var(--primary));
+      color: hsl(var(--primary) / 0.8);
     }
   }
+}
+
+/* Custom Scrollbar for premium dev vibe */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
 }
