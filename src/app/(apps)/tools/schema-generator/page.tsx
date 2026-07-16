@@ -12,7 +12,7 @@ export default function SchemaGeneratorPage() {
     title: 'How to build state systems',
     author: 'Jani Developer',
     description: 'An advanced breakdown of react rendering lifecycles.',
-    url: 'https://coderespite.com/learn/react'
+    url: 'https://coderespite.in/learn/react'
   })
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string | null>(null)

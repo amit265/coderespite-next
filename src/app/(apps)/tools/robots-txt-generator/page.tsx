@@ -9,7 +9,7 @@ import { FileCode, Play, Check, Copy, Loader2, Sparkles, Terminal } from 'lucide
 
 export default function RobotsTxtGeneratorPage() {
   const [userAgent, setUserAgent] = useState('*')
-  const [sitemapUrl, setSitemapUrl] = useState('https://coderespite.com/sitemap.xml')
+  const [sitemapUrl, setSitemapUrl] = useState('https://coderespite.in/sitemap.xml')
   const [disallowPath, setDisallowPath] = useState('/admin')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string | null>(null)

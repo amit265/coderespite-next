@@ -11,8 +11,8 @@ export default function MetaTagGeneratorPage() {
   const [params, setParams] = useState({
     title: 'CoderRespite',
     description: 'World-class developer utilities and workspace cockpit.',
-    url: 'https://coderespite.com',
-    image: 'https://coderespite.com/og-image.png'
+    url: 'https://coderespite.in',
+    image: 'https://coderespite.in/og-image.png'
   })
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string | null>(null)

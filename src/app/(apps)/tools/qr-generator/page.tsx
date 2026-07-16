@@ -8,9 +8,9 @@ import { Section } from '@/components/motion/Section'
 import { QrCode, Check, Copy, Download, RefreshCw, Globe } from 'lucide-react'
 
 export default function QRGeneratorPage() {
-  const [text, setText] = useState('https://coderespite.com')
+  const [text, setText] = useState('https://coderespite.in')
   const [size, setSize] = useState(250)
-  const [qrUrl, setQrUrl] = useState('https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fcoderespite.com')
+  const [qrUrl, setQrUrl] = useState('https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fcoderespite.in')
   const [copied, setCopied] = useState(false)
 
   const handleGenerate = () => {

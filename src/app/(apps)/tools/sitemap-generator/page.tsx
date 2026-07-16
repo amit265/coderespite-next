@@ -8,7 +8,7 @@ import { Section } from '@/components/motion/Section'
 import { FileCode, Check, Copy, Loader2, Sparkles, Terminal } from 'lucide-react'
 
 export default function SitemapGeneratorPage() {
-  const [urlsText, setUrlsText] = useState('https://coderespite.com/\nhttps://coderespite.com/tools\nhttps://coderespite.com/ai')
+  const [urlsText, setUrlsText] = useState('https://coderespite.in/\nhttps://coderespite.in/tools\nhttps://coderespite.in/ai')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
