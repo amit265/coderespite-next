@@ -9,7 +9,7 @@ import { FileCode, Play, Trash2, Check, Copy, Loader2, Sparkles, Terminal } from
 
 export default function READMEGeneratorPage() {
   const [params, setParams] = useState({
-    title: 'CoderRespite App',
+    title: 'CodeRespite App',
     description: 'A premium developer operating system providing low-latency browser tools.',
     install: 'npm install',
     run: 'npm run dev',
@@ -72,7 +72,7 @@ This codebase is licensed under the MIT License - see the details page for detai
       await navigator.clipboard.writeText(result)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (_) {}
+    } catch (_) { }
   }
 
   return (

@@ -8,7 +8,7 @@ import { Section } from '@/components/motion/Section'
 import { Play, Code, Eye, RefreshCw, Trash2 } from 'lucide-react'
 
 export default function CodePlaygroundPage() {
-  const [code, setCode] = useState(`<h1>Hello CoderRespite</h1>\n<p>Type HTML and JS here...</p>\n<script>\n  console.log("Playground loaded!");\n</script>`)
+  const [code, setCode] = useState(`<h1>Hello CodeRespite</h1>\n<p>Type HTML and JS here...</p>\n<script>\n  console.log("Playground loaded!");\n</script>`)
   const [iframeSrc, setIframeSrc] = useState('')
 
   const handleRun = () => {

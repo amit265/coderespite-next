@@ -155,7 +155,7 @@ export default function HomePage() {
                 Designed to run fast. Real fast.
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                No spinners. No heavy server roundtrips for basic conversions. CoderRespite runs utilities right in your browser context. Our layouts utilize React hydration protection and system theme preference detections to maximize page speeds and SEO scores.
+                No spinners. No heavy server roundtrips for basic conversions. CodeRespite runs utilities right in your browser context. Our layouts utilize React hydration protection and system theme preference detections to maximize page speeds and SEO scores.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link href="/tools/json-formatter">
@@ -172,7 +172,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            
+
             {/* Custom Interactive Mock Console */}
             <div className="p-6 bg-black/60 border-t lg:border-t-0 lg:border-l border-border/40 font-mono text-xs text-muted-foreground space-y-4 lg:col-span-2 flex flex-col justify-between">
               <div className="flex items-center justify-between border-b border-border/20 pb-3">

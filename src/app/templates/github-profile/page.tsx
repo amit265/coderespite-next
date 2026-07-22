@@ -38,7 +38,7 @@ ${params.bio}
 
 ## 📫 Connect with me
 - GitHub: [${params.name}](${params.github})
-- CoderRespite: [Workspace Dashboard](https://coderespite.in/dashboard)
+- CodeRespite: [Workspace Dashboard](https://coderespite.in/dashboard)
 `
       setResult(md)
       setLoading(false)
@@ -51,7 +51,7 @@ ${params.bio}
       await navigator.clipboard.writeText(result)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (_) {}
+    } catch (_) { }
   }
 
   return (

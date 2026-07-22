@@ -8,7 +8,7 @@ import { Section } from '@/components/motion/Section'
 import { Play, Copy, Check, Trash2, FileText, Code, Columns, AlertTriangle } from 'lucide-react'
 
 const sampleJSON = {
-  name: "CoderRespite Platform",
+  name: "CodeRespite Platform",
   version: "1.0.0",
   active: true,
   theme: "Obsidian Dark",
@@ -173,9 +173,8 @@ export default function JSONFormatterPage() {
                 readOnly
                 value={output}
                 placeholder="Formatted output will display here..."
-                className={`w-full h-full p-4 font-mono text-xs bg-transparent border-0 outline-none resize-none leading-relaxed ${
-                  error ? 'pt-24 text-rose-400/60' : 'text-emerald-400'
-                }`}
+                className={`w-full h-full p-4 font-mono text-xs bg-transparent border-0 outline-none resize-none leading-relaxed ${error ? 'pt-24 text-rose-400/60' : 'text-emerald-400'
+                  }`}
                 spellCheck="false"
               />
             </CardContent>

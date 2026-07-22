@@ -87,7 +87,7 @@ export function CommandMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
-  
+
   const router = useRouter()
   const inputRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
@@ -231,9 +231,8 @@ export function CommandMenu() {
                         router.push(item.href)
                         setIsOpen(false)
                       }}
-                      className={`command-item w-full text-left flex items-center justify-between p-3 rounded-lg transition-colors cursor-pointer ${
-                        isSelected ? 'bg-primary/10 text-primary' : 'hover:bg-secondary/40 text-muted-foreground'
-                      }`}
+                      className={`command-item w-full text-left flex items-center justify-between p-3 rounded-lg transition-colors cursor-pointer ${isSelected ? 'bg-primary/10 text-primary' : 'hover:bg-secondary/40 text-muted-foreground'
+                        }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <div className={`p-1.5 rounded bg-secondary/80 border border-border/10 shrink-0 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`}>
@@ -268,7 +267,7 @@ export function CommandMenu() {
                 <span>↑↓ to navigate</span>
                 <span>↵ to select</span>
               </div>
-              <span>CoderRespite search console</span>
+              <span>CodeRespite search console</span>
             </div>
           </motion.div>
         </div>

@@ -9,7 +9,7 @@ import { FileCode, Check, Copy, Loader2, Sparkles, Terminal } from 'lucide-react
 
 export default function MetaTagGeneratorPage() {
   const [params, setParams] = useState({
-    title: 'CoderRespite',
+    title: 'CodeRespite',
     description: 'World-class developer utilities and workspace cockpit.',
     url: 'https://coderespite.in',
     image: 'https://coderespite.in/og-image.png'
@@ -58,7 +58,7 @@ export default function MetaTagGeneratorPage() {
       await navigator.clipboard.writeText(result)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (_) {}
+    } catch (_) { }
   }
 
   return (

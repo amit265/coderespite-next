@@ -37,7 +37,7 @@ export default function APIDocBuilderPage() {
         spec = `{
   "openapi": "3.0.0",
   "info": {
-    "title": "CoderRespite Dynamically Parsed API Spec",
+    "title": "CodeRespite Dynamically Parsed API Spec",
     "version": "1.0.0",
     "description": "Generated specification from endpoint source code"
   },
@@ -114,7 +114,7 @@ Handler checks parameters, validates authentication scopes, and resolves databas
       await navigator.clipboard.writeText(result)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (_) {}
+    } catch (_) { }
   }
 
   return (

@@ -15,7 +15,7 @@ export function Footer() {
                 <Terminal className="h-3.5 w-3.5" />
               </div>
               <span className="font-bold text-base tracking-tight">
-                CoderRespite
+                CodeRespite
               </span>
             </Link>
             <p className="text-muted-foreground text-xs leading-relaxed">
@@ -118,7 +118,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border/40 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground/60">
-          <p>© {new Date().getFullYear()} CoderRespite. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} CodeRespite. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-primary transition-colors">
               Privacy Policy

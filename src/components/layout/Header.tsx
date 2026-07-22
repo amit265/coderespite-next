@@ -30,7 +30,7 @@ export function Header() {
             <Terminal className="h-4 w-4" />
           </div>
           <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent group-hover:from-violet-500 group-hover:to-indigo-500 transition-all duration-300">
-            CoderRespite
+            CodeRespite
           </span>
           <span className="h-1.5 w-1.5 rounded-full bg-violet-500 animate-pulse" />
         </Link>

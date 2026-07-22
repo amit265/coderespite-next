@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'Developer Ecosystem',
     'Next.js Tutorials',
     'Programming Debugging',
-    'CoderRespite',
+    'CodeRespite',
   ],
   authors: [
     {
